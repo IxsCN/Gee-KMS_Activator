@@ -1,0 +1,33 @@
+#!/bin/sh
+# Copyright (C) 2016 evenS
+
+install(){
+    tar xzvf kms.tar.gz -C /
+    start
+}
+
+uninstall(){
+    stop
+    rm -rf /usr/sbin/vlmcsd /etc/init.d/kms.sh
+}
+
+status() {
+    if [ `pidof vlmcsd` ]; then
+        stat="running"
+    else
+        stat="stopped"
+    fi
+    msg="<a  target=_blank href=\\\"https://stray.love/hiwifi/kms_activatorshi-yong-jiao-cheng\\\">高级教程</a>"
+    echo "{ \"status\" : \"$stat\", \"msg\" : \" $msg\"}"
+    return 0
+}
+
+start() {
+    /etc/init.d/kms.sh enable
+    /etc/init.d/kms.sh start
+}
+
+stop() {
+    /etc/init.d/kms.sh disable
+    /etc/init.d/kms.sh stop
+}
