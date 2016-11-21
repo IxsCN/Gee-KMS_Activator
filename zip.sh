@@ -1,6 +1,8 @@
 #!/bin/sh 
 # Copyright (C) 2016 evenS
 
-tar -czvf /tmp/data/kms/kms.tar.gz /usr/sbin/vlmcsd /etc/init.d/kms.sh
+workdir="/tmp/data/kms"
+appname="kms"
 
-tar -czvf /tmp/data/kms/archive.tgz -C /tmp/data/kms/ manifest.json script kms.tar.gz 
+tar -czvf "$workdir"/"$appname".tar.gz -T "$workdir"/file.list
+tar -czvf "$workdir"/archive.tgz -C "$workdir"/  manifest.json script "$appname".tar.gz 
